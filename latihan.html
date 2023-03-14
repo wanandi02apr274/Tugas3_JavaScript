@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daftar Nilai Mahasiswa</title>
+</head>
+<body>
+  <h3 align="center">DAFTAR NILAI MAHASISWA</h3>
+  <table align="center" border="1" cellpadding="10" cellspacing="0" width="75%">
+    <thead>
+      <tr bgcolor="tomato">
+        <th>NO</th>
+        <th>NAMA</th>
+        <th>NILAI</th>
+        <th>KETERANGAN</th>
+        <th>GRADE</th>
+        <th>PREDIKAT</th>
+      </tr>
+    </thead>
+    <tbody>
+      <script language="javascript">
+        //array of Object
+        let P1 ={nama:"Nandi", nilai:"100"};
+        let P2 ={nama:"Fira", nilai:"80"};
+        let P3 ={nama:"Doni", nilai:"70"};
+        let P4 ={nama:"irfan", nilai:"35"};
+        let P5 ={nama:"Rissa", nilai:"25"};
+        
+        let person = [P1,P2,P3,P4,P5];
+        let no = 1;
+        for (p of person) {
+          //kelulusan
+          ket = (p.nilai >= 60) ? "Lulus" : "Gagal";
+          //grade (if multikondisi)
+          // A = 85 - 100, B = 75 - < 85, 
+          if(p.nilai >= 85 && p.nilai <= 100){
+            grade = 'A';
+          }else if(p.nilai >= 75 && p.nilai <= 85){
+            grade = 'B';
+          }else if(p.nilai >= 60 && p.nilai < 75){
+            grade = 'C';
+          }else if(p.nilai >= 30 && p.nilai < 60){
+            grade = 'D';
+          }else if(p.nilai >= 0 && p.nilai <= 30){
+            grade = 'E';
+          }else{
+            grade = '';
+          }
+          //predikat (switch case)
+          // A = Memuaskan, B = Bagus, C = Cukup, D = Kurang, E = Buruk
+          switch(grade){
+            case 'A': predikat = 'Sangat Baik'; break;
+            case 'B': predikat = 'Bagus'; break;
+            case 'C': predikat = 'Cukup'; break;
+            case 'D': predikat = 'Kurang'; break;
+            case 'E': predikat = 'Sangat Kurang'; break;
+            default: predikat = ''; break;
+          }
+          //warna
+          warna = (no % 2 == 0) ? 'cyan' : 'yellow';
+          
+          document.write(
+            `<tr bgcolor="${warna}">
+              <td>${no++}</td>
+              <td>${p.nama}</td>
+              <td>${p.nilai}</td>
+              <td>${ket}</td>
+              <td>${grade}</td>
+              <td>${predikat}</td>
+            </tr>`
+            )
+        }
+      </script>
+    </tbody>
+  </table>
+</body>
+</html>
